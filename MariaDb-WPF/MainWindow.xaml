@@ -1,0 +1,40 @@
+﻿<Window x:Class="MariaDb_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MariaDb_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <TabControl>
+        <TabItem Header="Sync DB">
+            <Grid Margin="176,0,-176,0" Height="284">
+
+
+                <Button x:Name="ReadAllMailBUTTON" Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ReadAllMailBUTTON_Click" Width="48" Margin="248,183,0,0"/>
+                <Label x:Name="mail_Label" Content="E-mail:" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="33,45,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label x:Name="password_Label" Content="Password:" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="33,64,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="mail_TXTBOX" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="250" TextChanged="mail_TXTBOX_TextChanged" Margin="147,49,0,0"/>
+                <TextBox x:Name="password_TXTBOX" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Grid.Column="1" Grid.ColumnSpan="2"  TextChanged="password_TXTBOX_TextChanged" Margin="147,72,0,0" RenderTransformOrigin="-0.904,8.577"/>
+                <Button x:Name="register_BTN" Content="Save Credential" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="register_BTN_Click" RenderTransformOrigin="-1.386,5.64" Margin="229,183,0,0"/>
+                <Label x:Name="MariaUserName_LABEL" Content="Maria-Username:" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="33,87,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="MariaUsername_TXTBOX" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="250" TextChanged="MariaUsername_TXTBOX_TextChanged" Margin="147,95,0,0"/>
+                <TextBox x:Name="MariaPassword_TXTBOX" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="250" TextChanged="MariaPassword_TXTBOX_TextChanged" Margin="147,118,0,0"/>
+                <Label x:Name="Password_LABEL" Content="Maria-Password:" HorizontalAlignment="Left" Margin="33,113,0,142"  />
+                <ProgressBar x:Name="ProgressBAR" HorizontalAlignment="Left" Height="10" Margin="222,156,0,0" VerticalAlignment="Top" Width="100" Minimum="0" Maximum="100" ValueChanged="ProgressBAR_ValueChanged"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="New User">
+            <Grid>
+                <TextBox x:Name="MariaUserNameDB_TXTBOX" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="MariaUserNameDB_TXTBOX_TextChanged" Margin="0,142,0,0"/>
+                <TextBox x:Name="MariaPasswordDB_TXTBOX" HorizontalAlignment="Center" Margin="0,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="MariaPasswordDB_TXTBOX_TextChanged"/>
+                <Label x:Name="Maria_Username_LABEL" Content="Username:" HorizontalAlignment="Left" Margin="257,134,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="MariaPassword_LABEL" Content="Password:" HorizontalAlignment="Left" Margin="257,167,0,0" VerticalAlignment="Top"/>
+                <Label Content="Add your Hedie credential" HorizontalAlignment="Left" Margin="308,73,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="CreateDatabase_BTN" Content="Create local DB" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Click="CreateDatabase_BTN_Click"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+
+</Window>
