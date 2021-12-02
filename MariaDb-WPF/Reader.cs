@@ -28,11 +28,21 @@ namespace MariaDb_WPF
                 client.Authenticate(Global.myEmail, Global.myEmailPassword);
 
                 DateTime latestUpdate = Convert.ToDateTime(Helper.GetLatestUpdate(context));
-                int proce = 100/client.Count;
+                int proce = 0;
+                if (client.Count == 0)
+                {
+                    ProgressBAR.Value = 100;
+                }
+                else
+                {
+                    proce = 100 / client.Count;
+                }
                 for (int i = 0; i < client.Count; i++)
                 {
-                    ProgressBAR.Value += proce;
-
+                    if (ProgressBAR.Value != 100)
+                    {
+                        ProgressBAR.Value += proce;
+                    }
                     var message = client.GetMessage(i);
                     var subjet = message.Subject;
                     var body = message.GetTextBody(MimeKit.Text.TextFormat.Text);
