@@ -43,7 +43,9 @@ CREATE TABLE IF NOT EXISTS `comments` (
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell gnu.comments: ~0 rows (ungefär)
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell gnu.discussion
 CREATE TABLE IF NOT EXISTS `discussion` (
@@ -55,7 +57,27 @@ CREATE TABLE IF NOT EXISTS `discussion` (
   PRIMARY KEY (`discussionid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell gnu.discussion: ~0 rows (ungefär)
+/*!40000 ALTER TABLE `discussion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `discussion` ENABLE KEYS */;
+
+-- Dumpar struktur för tabell gnu.friends
+CREATE TABLE IF NOT EXISTS `friends` (
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `emaill` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`userid`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- Dumpar data för tabell gnu.friends: ~5 rows (ungefär)
+/*!40000 ALTER TABLE `friends` DISABLE KEYS */;
+INSERT INTO `friends` (`userid`, `username`, `emaill`) VALUES
+	(1, 'bober', 'bobertestar@gmail.com'),
+	(2, 'Sam', 'mintestmail321@gmail.com'),
+	(3, 'Alb', 'albinscodetesting@gmail.com'),
+	(4, 'Love', 'developertestingcrash@gmail.com'),
+	(5, 'Yos', 'mailconsolejonatan@gmail.com');
+/*!40000 ALTER TABLE `friends` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell gnu.posts
 CREATE TABLE IF NOT EXISTS `posts` (
@@ -69,7 +91,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   CONSTRAINT `FK_posts_discussion` FOREIGN KEY (`discussionid`) REFERENCES `discussion` (`discussionid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell gnu.posts: ~0 rows (ungefär)
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
