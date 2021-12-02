@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `friends` (
 
 -- Dumpar data för tabell gnu.friends: ~5 rows (ungefär)
 /*!40000 ALTER TABLE `friends` DISABLE KEYS */;
-INSERT INTO `friends` (`userid`, `username`, `emaill`) VALUES
+INSERT IGNORE INTO `friends` (`userid`, `username`, `emaill`) VALUES
 	(1, 'bober', 'bobertestar@gmail.com'),
 	(2, 'Sam', 'mintestmail321@gmail.com'),
 	(3, 'Alb', 'albinscodetesting@gmail.com'),
