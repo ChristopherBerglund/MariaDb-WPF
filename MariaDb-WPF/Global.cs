@@ -11,6 +11,7 @@ namespace MariaDb_WPF
         public static string myEmail;
         public static string myEmailPassword;
         public static string ConnectionString;
+        public static string secretKey = "secretkey";
         public static string CreateDB = @"-- --------------------------------------------------------
 -- Värd:                         127.0.0.1
 -- Serverversion:                10.6.3-MariaDB - mariadb.org binary distribution

@@ -54,12 +54,12 @@ namespace MariaDb_WPF
 
         private void register_BTN_Click(object sender, RoutedEventArgs e)
         {
-            
 
-            string Email = mail_TXTBOX.Text;
-            string EmailPassword = password_TXTBOX.Text;
-            string MariaUser = MariaUsername_TXTBOX.Text;
-            string mariaPassword = MariaPassword_TXTBOX.Text;
+
+            string Email = /*mail_TXTBOX.Text;*/ "bobertestar@gmail.com";
+            string EmailPassword = /*password_TXTBOX.Text;*/ "twlmqwaalsbdogbi";
+            string MariaUser = /*MariaUsername_TXTBOX.Text;*/ "root";
+            string mariaPassword = /*MariaPassword_TXTBOX.Text;*/ "Hejsan123!";
             
             var sw = new StringBuilder();
             sw.AppendLine("server=localhost;UserID=");
@@ -127,7 +127,7 @@ namespace MariaDb_WPF
 
             Reader.CreateCommand(Global.CreateDB); //Skapar Databas samt tabeller.
 
-            MessageBox.Show("Go to Sync tab to sync DB");
+            MessageBox.Show("DB was succesfully created, go to \"Sync DB\"");
 
         }
 

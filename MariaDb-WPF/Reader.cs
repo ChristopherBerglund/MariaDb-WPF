@@ -36,17 +36,21 @@ namespace MariaDb_WPF
                     var message = client.GetMessage(i);
                     var subjet = message.Subject;
                     var body = message.GetTextBody(MimeKit.Text.TextFormat.Text);
-                        string[] relativData = body.Split("XYXY/(/(XYXY7");
-                        string[] Data = relativData[0].Split("\"");
-                        foreach (var item in Data)
+                    string[] relativData = body.Split("XYXY/(/(XYXY7");
+                    //string[] Data = relativData[0].Split("\"");
+
+                    string decryptedMess = enCryption.Decrypt(relativData[0], Global.secretKey);
+                    string[] Data = decryptedMess.Split("\"");
+
+                    foreach (var item in Data)
                         {
                             {
                                 try
                                 {
                                     var date = Convert.ToDateTime(item);
-                                    if(date > latestUpdate)
+                                    if(date > latestUpdate || Convert.ToDateTime(subjet) > latestUpdate)
                                     {
-                                        CreateCommand(relativData[0]);
+                                        CreateCommand(decryptedMess);
                                         mails++;
                                     } 
                                 }
