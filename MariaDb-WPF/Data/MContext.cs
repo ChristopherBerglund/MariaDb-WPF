@@ -15,7 +15,7 @@ namespace MariaDb_WPF
         public virtual DbSet<Comment> Comments { get; set; }
         public DbSet<Discussion> Discussion { get; set; }
 
-        private const string connectionString = "server=localhost;userid=root;password=Hejsan123!;database=gnu;"; 
+        private string connectionString = Global.ConnectionString;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));

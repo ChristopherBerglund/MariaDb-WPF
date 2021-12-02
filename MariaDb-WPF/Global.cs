@@ -79,7 +79,3 @@ CREATE TABLE IF NOT EXISTS `posts` (
     
     }
 }
-//public static string myEmail = "bobertestar@gmail.com";
-//public static string myEmailPassword = "twlmqwaalsbdogbi";
-//public static string myUserName = "chris";
-//"server=localhost;User Id=root;Password=Hejsan123!;database=gnu;"
