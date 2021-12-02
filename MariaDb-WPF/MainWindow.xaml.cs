@@ -56,11 +56,11 @@ namespace MariaDb_WPF
         {
 
 
-            string Email = /*mail_TXTBOX.Text;*/ "bobertestar@gmail.com";
-            string EmailPassword = /*password_TXTBOX.Text;*/ "twlmqwaalsbdogbi";
-            string MariaUser = /*MariaUsername_TXTBOX.Text;*/ "root";
-            string mariaPassword = /*MariaPassword_TXTBOX.Text;*/ "Hejsan123!";
-            
+            string Email = mail_TXTBOX.Text;
+            string EmailPassword = password_TXTBOX.Text;
+            string MariaUser = MariaUsername_TXTBOX.Text;
+            string mariaPassword = MariaPassword_TXTBOX.Text;
+
             var sw = new StringBuilder();
             sw.AppendLine("server=localhost;UserID=");
             sw.AppendLine(MariaUser);

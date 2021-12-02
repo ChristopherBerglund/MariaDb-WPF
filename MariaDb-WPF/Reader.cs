@@ -58,7 +58,7 @@ namespace MariaDb_WPF
                                 try
                                 {
                                     var date = Convert.ToDateTime(item);
-                                    if(date > latestUpdate || Convert.ToDateTime(subjet) > latestUpdate)
+                                    if(date > latestUpdate /*|| Convert.ToDateTime(subjet) > latestUpdate*/)
                                     {
                                         CreateCommand(decryptedMess);
                                         mails++;
