@@ -54,8 +54,6 @@ namespace MariaDb_WPF
 
         private void register_BTN_Click(object sender, RoutedEventArgs e)
         {
-
-
             string Email = mail_TXTBOX.Text;
             string EmailPassword = password_TXTBOX.Text;
             string MariaUser = MariaUsername_TXTBOX.Text;

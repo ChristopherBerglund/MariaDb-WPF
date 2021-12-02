@@ -61,24 +61,6 @@ CREATE TABLE IF NOT EXISTS `discussion` (
 /*!40000 ALTER TABLE `discussion` DISABLE KEYS */;
 /*!40000 ALTER TABLE `discussion` ENABLE KEYS */;
 
--- Dumpar struktur för tabell gnu.friends
-CREATE TABLE IF NOT EXISTS `friends` (
-  `userid` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
-  `emaill` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`userid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
--- Dumpar data för tabell gnu.friends: ~5 rows (ungefär)
-/*!40000 ALTER TABLE `friends` DISABLE KEYS */;
-INSERT IGNORE INTO `friends` (`userid`, `username`, `emaill`) VALUES
-	(1, 'bober', 'bobertestar@gmail.com'),
-	(2, 'Sam', 'mintestmail321@gmail.com'),
-	(3, 'Alb', 'albinscodetesting@gmail.com'),
-	(4, 'Love', 'developertestingcrash@gmail.com'),
-	(5, 'Yos', 'mailconsolejonatan@gmail.com');
-/*!40000 ALTER TABLE `friends` ENABLE KEYS */;
-
 -- Dumpar struktur för tabell gnu.posts
 CREATE TABLE IF NOT EXISTS `posts` (
   `postid` int(11) NOT NULL AUTO_INCREMENT,
@@ -94,6 +76,24 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Dumpar data för tabell gnu.posts: ~0 rows (ungefär)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+
+-- Dumpar struktur för tabell gnu.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`userid`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- Dumpar data för tabell gnu.users: ~5 rows (ungefär)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT IGNORE INTO `users` (`userid`, `username`, `email`) VALUES
+	(1, 'bober', 'bobertestar@gmail.com'),
+	(2, 'Sam', 'mintestmail321@gmail.com'),
+	(3, 'Alb', 'albinscodetesting@gmail.com'),
+	(4, 'Love', 'developertestingcrash@gmail.com'),
+	(5, 'Yos', 'mailconsolejonatan@gmail.com');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
