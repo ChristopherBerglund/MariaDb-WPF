@@ -10,5 +10,15 @@ namespace MariaDb_WPF.Model
     {
         public int ID { get; set; }
         public DateTime TimeSet { get; set; }
+
+
+        public TimeSetter()
+        {
+
+        }
+        public TimeSetter(DateTime date)
+        {
+            TimeSet = date;
+        }
     }
 }
