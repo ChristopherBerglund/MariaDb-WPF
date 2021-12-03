@@ -14,7 +14,7 @@ namespace MariaDb_WPF
         public static string secretKey = "secretkey";
         public static string CreateDB = @"-- --------------------------------------------------------
 -- Värd:                         127.0.0.1
--- Serverversion:                10.6.3-MariaDB - mariadb.org binary distribution
+-- Serverversion:                10.6.5-MariaDB - mariadb.org binary distribution
 -- Server-OS:                    Win64
 -- HeidiSQL Version:             11.3.0.6295
 -- --------------------------------------------------------
@@ -77,6 +77,19 @@ CREATE TABLE IF NOT EXISTS `posts` (
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
+-- Dumpar struktur för tabell gnu.timesetter
+CREATE TABLE IF NOT EXISTS `timesetter` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TimeSet` datetime NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Dumpar data för tabell gnu.timesetter: ~0 rows (ungefär)
+/*!40000 ALTER TABLE `timesetter` DISABLE KEYS */;
+INSERT INTO `timesetter` (`ID`, `TimeSet`) VALUES
+	(1, '1950-01-01 00:00:00');
+/*!40000 ALTER TABLE `timesetter` ENABLE KEYS */;
+
 -- Dumpar struktur för tabell gnu.users
 CREATE TABLE IF NOT EXISTS `users` (
   `userid` int(11) NOT NULL,
@@ -85,12 +98,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userid`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumpar data för tabell gnu.users: ~5 rows (ungefär)
+-- Dumpar data för tabell gnu.users: ~3 rows (ungefär)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT IGNORE INTO `users` (`userid`, `username`, `email`) VALUES
+INSERT INTO `users` (`userid`, `username`, `email`) VALUES
 	(1, 'bober', 'bobertestar@gmail.com'),
 	(2, 'Sam', 'mintestmail321@gmail.com'),
-	(3, 'Alb', 'albinscodetesting@gmail.com'),
+	(3, 'Alb', 'albincodetesting@gmail.com'),
 	(4, 'Love', 'developertestingcrash@gmail.com'),
 	(5, 'Yos', 'mailconsolejonatan@gmail.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
