@@ -1,5 +1,6 @@
 ﻿using MailKit.Net.Imap;
 using MailKit.Net.Pop3;
+using MariaDb_WPF.Model;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
@@ -45,37 +46,45 @@ namespace MariaDb_WPF
                     //}
                     var message = client.GetMessage(i);
                     var subjet = message.Subject;
-                 
-
-
-
-
-
+                
                     var body = message.GetTextBody(MimeKit.Text.TextFormat.Text);
                     string[] relativData = body.Split("XYXY/(/(XYXY7");
                     //string[] Data = relativData[0].Split("\"");
 
                     string decryptedMess = enCryption.Decrypt(relativData[0], Global.secretKey);
                     string[] Data = decryptedMess.Split("\"");
-
-                    //SUBJECT Datetime
-                        //split hitta datetime
-                            //Jämför ny tabell som sparar senaste tiden på mailet.  
-
-                    switch (subjet)
+                    ////////////////
+                    if (!context.timeSetter.Any())
                     {
-                        case "DELETE":
-                            CreateCommand(decryptedMess);
-                            break;
-
-                        case "PUT":
-                            CreateCommand(decryptedMess);
-                            break;
-
-                        default:
-                            PostQuery(Data, latestUpdate, decryptedMess);
-                            break;
+                        TimeSetter time = new TimeSetter() { TimeSet = new DateTime(1950,01,01) };
+                        context.timeSetter.Add(time);
+                        context.SaveChanges();
                     }
+                    DateTime LocalDate = context.timeSetter.Select(x => x.TimeSet).First();
+                    string[] Sub = subjet.Split("/()/");
+                    DateTime IncomeDate = Convert.ToDateTime(Sub[0]);
+                    ////////////////
+                    if (IncomeDate > LocalDate)
+                    {
+
+                    
+
+                        switch (Sub[1])
+                        {
+                            case "DELETE":
+                                CreateCommand(decryptedMess);
+                                break;
+
+                            case "PUT":
+                                CreateCommand(decryptedMess);
+                                break;
+
+                            default:
+                                PostQuery(Data, latestUpdate, decryptedMess);
+                                break;
+                        }
+                    }
+
                 }
                 return mails;
             }
@@ -119,3 +128,9 @@ namespace MariaDb_WPF
         }
     }
 }
+
+
+
+//SUBJECT Datetime                                          CHECK 
+//split hitta datetime                                      CHECK    
+//Jämför ny tabell som sparar senaste tiden på mailet.      CHECK

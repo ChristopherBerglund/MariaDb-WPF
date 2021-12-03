@@ -14,6 +14,7 @@ namespace MariaDb_WPF
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public DbSet<Discussion> Discussion { get; set; }
+        public DbSet<TimeSetter> timeSetter { get; set; }
 
         private string connectionString = Global.ConnectionString;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
