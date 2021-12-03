@@ -85,7 +85,7 @@ namespace MariaDb_WPF
             MariaPassword_TXTBOX.IsReadOnly = true;
 
             register_BTN.Visibility = Visibility.Hidden;
-            ReadAllMailBUTTON.Visibility = Visibility.Hidden;
+            ReadAllMailBUTTON.Visibility = Visibility.Visible;
         }
 
         private void MariaUsername_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)

@@ -14,10 +14,10 @@ namespace MariaDb_WPF
     public class Reader
     {
         public static MContext context = new MContext();
-        
+
         public static int ReadUnOpenedEmails(/*ProgressBar ProgressBAR*/)
         {
-            
+
             using (var client = new Pop3Client())
             {
                 int mails = 0;
@@ -45,6 +45,12 @@ namespace MariaDb_WPF
                     //}
                     var message = client.GetMessage(i);
                     var subjet = message.Subject;
+                 
+
+
+
+
+
                     var body = message.GetTextBody(MimeKit.Text.TextFormat.Text);
                     string[] relativData = body.Split("XYXY/(/(XYXY7");
                     //string[] Data = relativData[0].Split("\"");
@@ -52,24 +58,24 @@ namespace MariaDb_WPF
                     string decryptedMess = enCryption.Decrypt(relativData[0], Global.secretKey);
                     string[] Data = decryptedMess.Split("\"");
 
-                    foreach (var item in Data)
-                        {
-                            {
-                                try
-                                {
-                                    var date = Convert.ToDateTime(item);
-                                    if(date > latestUpdate /*|| Convert.ToDateTime(subjet) > latestUpdate*/)
-                                    {
-                                        CreateCommand(decryptedMess);
-                                        mails++;
-                                    } 
-                                }
-                                catch (Exception)
-                                {
-                                    continue;
-                                }
-                            }
-                        }
+                    //SUBJECT Datetime
+                        //split hitta datetime
+                            //Jämför ny tabell som sparar senaste tiden på mailet.  
+
+                    switch (subjet)
+                    {
+                        case "DELETE":
+                            CreateCommand(decryptedMess);
+                            break;
+
+                        case "PUT":
+                            CreateCommand(decryptedMess);
+                            break;
+
+                        default:
+                            PostQuery(Data, latestUpdate, decryptedMess);
+                            break;
+                    }
                 }
                 return mails;
             }
@@ -85,7 +91,30 @@ namespace MariaDb_WPF
                     comm.CommandText = queryString;
                     comm.ExecuteNonQuery();
                 }
-                
+
+            }
+        }
+
+        public static void PostQuery(string[] maildata, DateTime latestUpdate, string decryptedMess)
+        {
+            foreach (var item in maildata)
+            {
+                ///Om den hittar ett datetime från mailet. Försöker den skapa ett SQL-command om
+                try
+                {
+                    var dateInMailBody = Convert.ToDateTime(item);
+                    //Om det går jämför den med senaste tiden som finns i DB:n
+                    if (dateInMailBody > latestUpdate /*|| Convert.ToDateTime(subjet) > latestUpdate*/)
+                    {
+                        CreateCommand(decryptedMess);
+                        //kanske vill ha räknare för mailen den skapat
+                    }
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
+
             }
         }
     }
