@@ -26,14 +26,21 @@
         </TabItem>
         <TabItem Header="New User">
             <Grid>
-                <TextBox x:Name="MariaUserNameDB_TXTBOX" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="MariaUserNameDB_TXTBOX_TextChanged" Margin="0,142,0,0"/>
-                <TextBox x:Name="MariaPasswordDB_TXTBOX" HorizontalAlignment="Center" Margin="0,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="MariaPasswordDB_TXTBOX_TextChanged"/>
-                <Label x:Name="Maria_Username_LABEL" Content="Username:" HorizontalAlignment="Left" Margin="257,134,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="MariaPassword_LABEL" Content="Password:" HorizontalAlignment="Left" Margin="257,167,0,0" VerticalAlignment="Top"/>
-                <Label Content="Add your Hedie credential" HorizontalAlignment="Left" Margin="308,73,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="CreateDatabase_BTN" Content="Create local DB" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Click="CreateDatabase_BTN_Click"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="387*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="MariaUserNameDB_TXTBOX" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="MariaUserNameDB_TXTBOX_TextChanged" Margin="317,142,0,0" Grid.Column="2"/>
+                <TextBox x:Name="MariaPasswordDB_TXTBOX" HorizontalAlignment="Left" Margin="317,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="MariaPasswordDB_TXTBOX_TextChanged" Grid.Column="2"/>
+                <Label x:Name="Maria_Username_LABEL" Content="Username:" HorizontalAlignment="Left" Margin="237,134,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                <Label x:Name="MariaPassword_LABEL" Content="Password:" HorizontalAlignment="Left" Margin="237,167,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                <Label Content="Add your Hedie credential" HorizontalAlignment="Left" Margin="288,73,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                <Button x:Name="CreateDatabase_BTN" Content="Create local DB" HorizontalAlignment="Left" Margin="335,203,0,0" VerticalAlignment="Top" Click="CreateDatabase_BTN_Click" Grid.Column="2"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="675,26,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
             </Grid>
         </TabItem>
+
     </TabControl>
 
 

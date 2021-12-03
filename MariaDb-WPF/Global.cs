@@ -33,7 +33,7 @@ USE `gnu`;
 
 -- Dumpar struktur för tabell gnu.comments
 CREATE TABLE IF NOT EXISTS `comments` (
-  `commentid` int(11) NOT NULL AUTO_INCREMENT,
+  `commentid` int(11) NOT NULL,
   `user` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `comment_text` varchar(100) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   PRIMARY KEY (`commentid`) USING BTREE,
   KEY `FK_comments_posts` (`postid`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumpar data för tabell gnu.comments: ~0 rows (ungefär)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
@@ -49,13 +49,13 @@ CREATE TABLE IF NOT EXISTS `comments` (
 
 -- Dumpar struktur för tabell gnu.discussion
 CREATE TABLE IF NOT EXISTS `discussion` (
-  `discussionid` int(11) NOT NULL AUTO_INCREMENT,
+  `discussionid` int(11) NOT NULL,
   `headline` varchar(50) DEFAULT NULL,
   `discussiontext` varchar(500) DEFAULT NULL,
   `user` varchar(50) DEFAULT NULL,
   `createddate` datetime DEFAULT NULL,
   PRIMARY KEY (`discussionid`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumpar data för tabell gnu.discussion: ~0 rows (ungefär)
 /*!40000 ALTER TABLE `discussion` DISABLE KEYS */;
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `discussion` (
 
 -- Dumpar struktur för tabell gnu.posts
 CREATE TABLE IF NOT EXISTS `posts` (
-  `postid` int(11) NOT NULL AUTO_INCREMENT,
+  `postid` int(11) NOT NULL,
   `User` varchar(50) NOT NULL DEFAULT '',
   `text` varchar(1000) NOT NULL DEFAULT '',
   `DateTime` datetime NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`postid`) USING BTREE,
   KEY `FK_posts_discussion` (`discussionid`),
   CONSTRAINT `FK_posts_discussion` FOREIGN KEY (`discussionid`) REFERENCES `discussion` (`discussionid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumpar data för tabell gnu.posts: ~0 rows (ungefär)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
@@ -79,11 +79,11 @@ CREATE TABLE IF NOT EXISTS `posts` (
 
 -- Dumpar struktur för tabell gnu.users
 CREATE TABLE IF NOT EXISTS `users` (
-  `userid` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`userid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumpar data för tabell gnu.users: ~5 rows (ungefär)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;

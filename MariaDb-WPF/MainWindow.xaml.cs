@@ -22,6 +22,7 @@ namespace MariaDb_WPF
     public partial class MainWindow : Window
     {
         public static int mails;
+        public static bool forever = true;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,16 +31,23 @@ namespace MariaDb_WPF
 
         private void ReadAllMailBUTTON_Click(object sender, RoutedEventArgs e)
         {
-            int mails = Reader.ReadUnOpenedEmails(ProgressBAR);
-            if(mails > 0)
+            while (true)
             {
-                MessageBox.Show($"{mails} new messages was downloaded to local DB");
-            }
-            else
-            {
-                MessageBox.Show($"No new messages was found");
+                int mails = Reader.ReadUnOpenedEmails(/*ProgressBAR*/);
+                Thread.Sleep(5000);
 
             }
+            
+
+            //if(mails > 0)
+            //{
+            //    MessageBox.Show($"{mails} new messages was downloaded to local DB");
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"No new messages was found");
+
+            //}
         }
 
         private void mail_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
@@ -77,7 +85,7 @@ namespace MariaDb_WPF
             MariaPassword_TXTBOX.IsReadOnly = true;
 
             register_BTN.Visibility = Visibility.Hidden;
-            ReadAllMailBUTTON.Visibility = Visibility.Visible;
+            ReadAllMailBUTTON.Visibility = Visibility.Hidden;
         }
 
         private void MariaUsername_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
