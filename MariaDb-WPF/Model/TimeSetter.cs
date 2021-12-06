@@ -16,6 +16,10 @@ namespace MariaDb_WPF.Model
         {
 
         }
+        /// <summary>
+        /// Konstruktor som sätter standardvärde för tid
+        /// </summary>
+        /// <param name="date"></param>
         public TimeSetter(DateTime date)
         {
             TimeSet = date;

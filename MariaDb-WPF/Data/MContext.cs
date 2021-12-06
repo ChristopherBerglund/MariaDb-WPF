@@ -19,6 +19,7 @@ namespace MariaDb_WPF
         private string connectionString = Global.ConnectionString;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //MariaDb är kompatibel med MySql
             optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
     }

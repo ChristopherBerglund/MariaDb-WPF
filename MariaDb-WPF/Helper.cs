@@ -8,7 +8,11 @@ namespace MariaDb_WPF
 {
     public class Helper
     {
-
+        /// <summary>
+        /// Kollar senaste tid i databasen (används ej för tillfället)
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns>Senaste tiden</returns>
         public static string GetLatestUpdate(MContext context)
         {
             DateTime latestCom = new DateTime(1950, 1, 1);

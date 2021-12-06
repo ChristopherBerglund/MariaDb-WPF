@@ -10,6 +10,12 @@ namespace MariaDb_WPF
 {
     public class enCryption
     {
+        /// <summary>
+        /// Funktion för att kryptera mailen som skickas
+        /// </summary>
+        /// <param name="clearText"></param>
+        /// <param name="secretkey"></param>
+        /// <returns>Encrypted string</returns>
         public static string Encrypt(string clearText, string secretkey)
         {
             string EncryptionKey = secretkey;
@@ -31,6 +37,13 @@ namespace MariaDb_WPF
             }
             return clearText;
         }
+
+        /// <summary>
+        /// Funktion för att dekryptera meddelande från mailen.
+        /// </summary>
+        /// <param name="cipherText"></param>
+        /// <param name="secretkey"></param>
+        /// <returns>Decrypted string</returns>
         public static string Decrypt(string cipherText, string secretkey)
         {
             string EncryptionKey = secretkey;

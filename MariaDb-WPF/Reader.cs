@@ -16,6 +16,10 @@ namespace MariaDb_WPF
     {
         public static MContext context = new MContext();
 
+        /// <summary>
+        /// Funktion för att läsa in nya mail
+        /// </summary>
+        /// <returns>En int (antal mail)</returns>
         public static int ReadUnOpenedEmails(/*ProgressBar ProgressBAR*/)
         {
 
@@ -28,6 +32,7 @@ namespace MariaDb_WPF
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
                 client.Authenticate(Global.myEmail, Global.myEmailPassword);
 
+                //Ombyggnad om man vill ha en progression bar
                 //DateTime latestUpdate = Convert.ToDateTime(Helper.GetLatestUpdate(context));
                 //int proce = 0;
                 //if (client.Count == 0)
@@ -38,6 +43,8 @@ namespace MariaDb_WPF
                 //{
                 //    proce = 100 / client.Count;
                 //}
+
+                //För varje oöppnat mail, gör detta:
                 for (int i = 0; i < client.Count; i++)
                 {
                     //if (ProgressBAR.Value != 100)
@@ -48,12 +55,15 @@ namespace MariaDb_WPF
                     var subjet = message.Subject;
                 
                     var body = message.GetTextBody(MimeKit.Text.TextFormat.Text);
+                    //Splittar strängen på detta ifall oväntad text finns efter queryn i mailet:
                     string[] relativData = body.Split("XYXY/(/(XYXY7");
                     //string[] Data = relativData[0].Split("\"");
 
+                    //Dekrypterar meddelandet
                     string decryptedMess = enCryption.Decrypt(relativData[0], Global.secretKey);
                     string[] Data = decryptedMess.Split("\"");
-                    ////////////////
+
+                    //Om det ej finns ngn tidigare tid i db så skapa en för att kunna jämföra värden
                     if (!context.timeSetter.Any())
                     {
                         TimeSetter time = new TimeSetter( new DateTime(1950, 01, 01));
@@ -71,21 +81,22 @@ namespace MariaDb_WPF
                     if (IncomeDate > LocalDate)
                     {
 
+                        CreateCommand(decryptedMess);
 
-                        switch (Sub[1])
-                        {
-                            case "DELETE":
-                                CreateCommand(decryptedMess);
-                                break;
+                        //switch (Sub[1])
+                        //{
+                        //    case "DELETE":
+                        //        CreateCommand(decryptedMess);
+                        //        break;
 
-                            case "PUT":
-                                CreateCommand(decryptedMess);
-                                break;
+                        //    case "PUT":
+                        //        CreateCommand(decryptedMess);
+                        //        break;
 
-                            default:
-                                CreateCommand(decryptedMess);
-                                break;
-                        }
+                        //    default:
+                        //        CreateCommand(decryptedMess);
+                        //        break;
+                        //}
 
                         var thistimeSetter = context.timeSetter.Where(x => x.ID == 1).First();
                         thistimeSetter.TimeSet = IncomeDate;
@@ -97,6 +108,11 @@ namespace MariaDb_WPF
                 return mails;
             }
         }
+
+        /// <summary>
+        /// Lägger in queryString i Databasen
+        /// </summary>
+        /// <param name="queryString">Sql Query</param>
         public static void CreateCommand(string queryString)
         {
             string connectionString = Global.ConnectionString;

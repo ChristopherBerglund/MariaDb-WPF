@@ -29,6 +29,11 @@ namespace MariaDb_WPF
             ReadAllMailBUTTON.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Kollar mailen var 5e sekund
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReadAllMailBUTTON_Click(object sender, RoutedEventArgs e)
         {
             while (true)
@@ -50,16 +55,23 @@ namespace MariaDb_WPF
             //}
         }
 
+        //Textruta för skriva in mail
         private void mail_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
+        //Textruta för skriva in lösenord
         private void password_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Sätter inskrivna värden till variabler i programmet
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void register_BTN_Click(object sender, RoutedEventArgs e)
         {
             string Email = mail_TXTBOX.Text;
@@ -88,36 +100,41 @@ namespace MariaDb_WPF
             ReadAllMailBUTTON.Visibility = Visibility.Visible;
         }
 
+        //Textruta för skriva in användarnamn för HeidiSQL
         private void MariaUsername_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
+        //Textruta för skriva in lösenord för HeidiSQL
         private void MariaPassword_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void Databasename_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void CreateDB_BTN_Click(object sender, RoutedEventArgs e)
         {
             
         }
 
+        //Textruta för skriva in användarnamn för HeidiSQL(skapa)
         private void MariaUserNameDB_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
+        //Textruta för skriva in lösenord för HeidiSQL(skapa)
         private void MariaPasswordDB_TXTBOX_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Skapar databas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateDatabase_BTN_Click(object sender, RoutedEventArgs e)
         {
 

@@ -8,10 +8,15 @@ namespace MariaDb_WPF
 {
     public class Global
     {
+        //Programmet tar upp infon nedan från programfönsret man fyller i
         public static string myEmail;
         public static string myEmailPassword;
         public static string ConnectionString;
         public static string secretKey = "secretkey";
+
+        /// <summary>
+        /// Skapar databasen och initierar tabellerna
+        /// </summary>
         public static string CreateDB = @"-- --------------------------------------------------------
 -- Värd:                         127.0.0.1
 -- Serverversion:                10.6.5-MariaDB - mariadb.org binary distribution
@@ -103,9 +108,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`userid`, `username`, `email`) VALUES
 	(1, 'bober', 'bobertestar@gmail.com'),
 	(2, 'Sam', 'mintestmail321@gmail.com'),
-	(3, 'Alb', 'albincodetesting@gmail.com'),
+	(3, 'Albin', 'albinscodetesting@gmail.com'),
 	(4, 'Love', 'developertestingcrash@gmail.com'),
-	(5, 'Yos', 'mailconsolejonatan@gmail.com');
+	(5, 'Yos', 'mailconsolejonatan@gmail.com'),
+    (6, 'Daniel', 'Danielkhoshtest@gmail.com'),
+    (7, 'Boris', 'reezlatest@gmail.com'),
+    (8, 'Johanna', 'johannastestmail@gmail.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
